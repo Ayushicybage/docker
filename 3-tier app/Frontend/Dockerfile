@@ -2,11 +2,17 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package.json ./
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-COPY src ./src
+# Copy all project files (src, public, etc.)
+COPY . .
 
+# Expose React dev server port
 EXPOSE 3000
 
+# Start React app
 CMD ["npm", "start"]
