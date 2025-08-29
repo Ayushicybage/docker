@@ -1,12 +1,13 @@
-FROM node:18
-
+# build stage
+FROM node:18 AS build
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm install
-
-# Copy all project files including public/index.html
 COPY . .
+RUN npm run build
 
-EXPOSE 3000
-CMD ["npm", "start"]
+# production stage
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
