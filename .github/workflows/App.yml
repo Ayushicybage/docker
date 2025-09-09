@@ -29,7 +29,7 @@ jobs:
       - name: Build and push frontend
         uses: docker/build-push-action@v5
         with:
-          context: ./Frontend
+          context: ./3-tier app/Frontend
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/frontend:latest
 
@@ -37,7 +37,7 @@ jobs:
       - name: Build and push backend
         uses: docker/build-push-action@v5
         with:
-          context: ./Backend
+          context: ./3-tier app/Backend
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/backend:latest
 
