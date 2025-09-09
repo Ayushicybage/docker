@@ -43,4 +43,4 @@ jobs:
 
       # 7. Deployment confirmation
       - name: Done
-        run: echo "✅ Images built and pushed to Docker Hub."
+        run: echo "✅ Images built and pushed to Docker Hub successfully."
