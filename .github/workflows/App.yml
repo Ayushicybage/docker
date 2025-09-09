@@ -41,14 +41,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/backend:latest
 
-      # 7. Build and push db
-      - name: Build and push database
-        uses: docker/build-push-action@v5
-        with:
-          context: ./3-tier app/db
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/db:latest
-
-      # 8. Deployment confirmation
+      # 7. Deployment confirmation
       - name: Done
         run: echo "✅ Images built and pushed to Docker Hub successfully."
